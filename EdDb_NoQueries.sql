@@ -3,6 +3,8 @@ drop database if exists education;
 GO
 Create Database education;
 GO
+use education;
+GO
 
 -- drop all tables
 drop table if exists major_class_relationship;
