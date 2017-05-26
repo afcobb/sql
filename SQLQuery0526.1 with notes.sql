@@ -1,8 +1,31 @@
-select subject as 'Department', section, CONCAT(first_name, ' ', last_name) as "full name"
-from class
-join instructor
+--query show all majors which require math 201 
+select class
+from major
+
+
+--show all required classes for the engineering major  
+/*select description, subject, section 
+from major  -- gives us all majors
+--where major.description = 'Engineering' -- specifies engineering 
+join major_class_relationship
+on major_class_relationship.major_id = major.id --pulling all the records from major class rel that have the major.id
+join class
+on class.id = major_class_relationship.class_id
+where major.description = 'Engineering' 
+*/
+
+/*
+select * from major
+select * from class
+select * from major_class_relationship
+*/
+
+/*select subject as 'Department', section as 'Section', CONCAT(first_name, ' ', last_name) as "Instructor Name"
+from instructor
+join class
 	on class.instructor_id = instructor.id
 order by last_name
+*/
 
 --query: show class info with instructor name (first and last) in instructor last name seequence 
 /*select last_name, first_name, subject
