@@ -1,3 +1,4 @@
+drop table if exists [line_item]
 drop table if exists [request]
 drop table if exists [product]
 drop table if exists [vendor]
@@ -85,3 +86,17 @@ insert into [request]
 	values
 	(1,'My first request', 'NEW!')
 go
+CREATE TABLE [dbo].[line_item](
+	[ID] [int] IDENTITY(1,1) NOT NULL primary key,
+	[Quantity] [int] not null,
+	[RequestID] [int] not null foreign key references [request](ID),
+	[ProductID] [int] not null foreign key references [product](ID)
+)
+go
+create unique index idx_requestid_productid
+	on [line_item](RequestID, ProductID)
+	go
+insert into [line_item]
+	(RequestId, ProductId, Quantity)
+values
+	(1, 1, 10)
